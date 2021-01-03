@@ -6,27 +6,32 @@ public class room1r : MonoBehaviour
 {
     public Transform player;
     public Transform room;
-
+    public Rigidbody2D roomrb;
     public Vector2 doorPos;
 
 
     void Update()
     {
-        doorPos = new Vector2(room.position.x + 20, room.position.y);
-    }
-   
+        doorPos = new Vector2(room.position.x + 10, room.position.y);
 
-    void OnTriggerEnter2D(Collider2D Wall)
-    {
-       
-
-        if (Mathf.Abs(player.position.x - doorPos.x) < 50  && Mathf.Abs(player.position.y - doorPos.y) < 50)
+        if ((Mathf.Abs(doorPos.x - player.position.x) < 2) && (Mathf.Abs(doorPos.y - player.position.y)) < 4 )
         {
-            Wall.enabled = false;
+            roomrb.simulated = false;
         }
         else
         {
-            Wall.enabled = true;
+            roomrb.simulated = true;
         }
     }
+   
+
+    
+       
+
+        
+        
+        
+    
+
+    
 }
